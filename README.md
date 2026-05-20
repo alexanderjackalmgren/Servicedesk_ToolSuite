@@ -9,11 +9,12 @@ To bypass this legacy limitation and ensure a completely silent application star
 ### 1. File Structure Setup
 
 Place your primary diagnostic payload script and your launcher engine file in the same dedicated deployment directory:
-```
+
 .\Foldername\
 ├── NetworkSuite.ps1
 └── Launch.bat
 
+```
 Diagnostic Suite (Main Dashboard)
 ├── [NETWORK] Tab
 │    ├── DNS Inspector          (Queries common records via Resolve-DnsName)
@@ -29,11 +30,12 @@ Diagnostic Suite (Main Dashboard)
 ├── System Profiler        (Hardware makeup, OS spec, Uptime, User, and BitLocker)
 ├── Event Log Inspector    (Gathers recent Level 1/2/3 Critical/Error/Warning events)
 └── Account Status         (Queries local/ADSI/EntraID active user account properties)
+```
 
 ### 2. The Launcher Configuration (`Launch.bat`)
 Populate your wrapper payload batch script with the following self-elevating architecture. This script handles the initial dynamic check, passes execution off to a hidden background process pipeline, and requests administrative privileges cleanly:
 
-```cmd
+```
 @echo off
 if "%~1"=="elevated" goto :run
 powershell -NoProfile -WindowStyle Hidden -Command "Start-Process '%~f0' -ArgumentList 'elevated' -Verb RunAs"
@@ -42,6 +44,7 @@ exit /b
 :run
 cd /d "%~dp0"
 start "" powershell.exe -WindowStyle Hidden -NoProfile -ExecutionPolicy Bypass -File "NetworkSuite.ps1"
+```
 
 Tool Deep Dive & Mechanics
 🔍 ARP Discovery & Sweep Engine
