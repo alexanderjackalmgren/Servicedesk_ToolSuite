@@ -80,7 +80,7 @@ Designed for fast triage of remote home workers or remote satellite branches exp
 Every tool inside the Unified Network Diagnostic Suite maintains consistent, programmatic file output patterns. Logs are structured natively to allow technicians to rapidly extract configuration states or batch-collect data files for escalated engineering support.
 
 Logs are arranged dynamically by date inside a local directory path layout:
-
+```
 C:\\temp\\
  ├── quick_dns\\<yyyy-MM-dd>\\<HH-mm-ss>.txt
  ├── quick_netstat\\<yyyy-MM-dd>\\<HH-mm-ss>.txt
@@ -93,7 +93,7 @@ C:\\temp\\
  ├── quick_adapter\\<yyyy-MM-dd>\\<HH-mm-ss>.txt
  ├── quick_isptriage\\<yyyy-MM-dd>\\<HH-mm-ss>.txt
  └── quick_arp\\<yyyy-MM-dd>\\<HH-mm-ss>.csv     <-- Structured Data Output
-
+```
 CSV Output Design
 
 While other profiling utilities drop their data records into clean unstructured text views inside their respective folders, the ARP Discovery tool converts the underlying PowerShell pipeline objects directly into an active tabular data structure via Export-Csv -NoTypeInformation -Encoding UTF8.
@@ -109,9 +109,9 @@ This diagnostic toolset is entirely generic, modular, and built exclusively on d
 
     Compliance Suggestion: If modifications are made locally to pre-populate text controls with internal corporate asset ranges or names for tech convenience, ensure a proper .gitignore configuration masks local logging paths or temporary testing branches before initiating upstream pushes.
     """
-
+```
 with open("README.md", "w", encoding="utf-8") as f:
 f.write(readme_content)
 
 print("Successfully written README.md file.")
-
+```
