@@ -9,7 +9,7 @@ To bypass this legacy limitation and ensure a completely silent application star
 ### 1. File Structure Setup
 
 Place your primary diagnostic payload script and your launcher engine file in the same dedicated deployment directory:
-
+```
 .\Foldername\
 ├── NetworkSuite.ps1
 └── Launch.bat
